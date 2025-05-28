@@ -16,7 +16,7 @@ const index = (req, res) => {
     })
 };
 
-// Inserimento metodo controller: Delete
+// Inserimento metodo controller: Destroy
 const destroy = (req, res) => {
     // recupero l'id
     const id = req.params.id;
@@ -32,7 +32,26 @@ const destroy = (req, res) => {
 
 }
 
+// Inserimento metodo controller: Show
+const show = (req, res) => {
+    // recupero l'id
+    const id = req.params.id;
+
+    // Creazione della query
+    const sql = "SELECT * FROM posts WHERE id= ?";
+
+    // Esecuzione della query con metodo query della variabile connection
+    connection.query(sql, [id], (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: "Database query failed: " + err });
+        }
+
+        res.json(results);
+    })
+}
+
 module.exports = {
     index,
-    destroy
+    destroy,
+    show
 }
