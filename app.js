@@ -1,15 +1,17 @@
 const express = require(`express`);
 const app = express();
 const port = 3000;
+const blogRouter = require(`./routers/blog`);
 
 app.use(express.static(`public`));
 app.use(express.json());
 
 // Inserimento rotta base - Entry point
 app.get("/", (req, res) => {
-    console.log("Server del mio blog")
     res.send("Benvenuto nel mio Blog")
 })
+
+app.use("/posts", blogRouter);
 
 // Server in ascolto
 app.listen(port, () => {

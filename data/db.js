@@ -11,7 +11,9 @@ const connection = mysql.createConnection({
 
 // Utilizzo la variabile per stabilire la connessione con il database
 connection.connect(() => {
-    if (err) console.log(err);
+    if (err) {
+        console.log(err)
+    };
     console.log(`Connected to mysql`)
 })
 
