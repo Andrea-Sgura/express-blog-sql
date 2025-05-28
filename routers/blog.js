@@ -5,6 +5,9 @@ const router = express.Router();
 const postController = require(`../controllers/postController`)
 
 // Index
-router.get(`/`, postController.index)
+router.get(`/`, postController.index);
+
+// Destroy
+router.delete(`/:id`, postController.destroy)
 
 module.exports = router;
